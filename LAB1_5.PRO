@@ -2,7 +2,7 @@ domains
     hour = integer
     subject = symbol
 predicates
-    task(hour, hour, subject)
+    nondeterm task(hour, hour, subject)
 clauses
     task(0, 7, sleep).
     task(7, 8, breakfast).
@@ -12,6 +12,8 @@ clauses
     task(19, 20, dinner).
     task(20, 23, relaxion).
     task(23, 24, sleep).
-%task(X, Y, lunch).
-%task(14, 19, X)
-%task(X, Y, sleep)
+%goal
+    %task(X, Y, lunch).
+    %task(14, 19, X).
+    %task(X, Y, sleep).
+    
