@@ -1,9 +1,22 @@
 domains
-  n = integer
+  col = symbol
+  name = symbol
 predicates
-  action(integer)
+  nondeterm girl(name)
+  nondeterm color(col)
+  nondeterm fullset(name, col, col)
 clauses
-  action(1):- write(1), nl, !.
-  action(N):- write(N), nl, N1=N-1, action(N1).
-%goal
-%action(10)
+  girl(anya).
+  girl(valya).
+  girl(natasha).
+  color(white).
+  color(blue).
+  color(green).
+  fullset(Name, Dress, Shoes):- girl(Name), color(Shoes), color(Dress), Name = natasha, Shoes = green, Shoes <> Dress,
+  				not(fullset(anya, Dress, _)).
+  fullset(Name, Dress, Shoes):- girl(Name), color(Shoes), color(Dress), Name = anya, Shoes = Dress,
+  				not(fullset(natasha, _, Shoes)), not(fullset(valya, _, Shoes)).
+  fullset(Name, Dress, Shoes):- girl(Name), color(Shoes), color(Dress), Name = valya, not(Shoes = white), not(Dress = white), Shoes <> Dress,
+  				not(fullset(natasha, _, Shoes)).  
+goal
+  fullset(Name, Dress, Shoes).

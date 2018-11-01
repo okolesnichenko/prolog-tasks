@@ -1,7 +1,19 @@
 domains
-  n = integer
+  col = symbol
+  name = symbol
 predicates
-  action(integer)
+  girl(name)
+  color(col)
+  pair(name, col)
 clauses
-  action(1):- write(1), nl, !.
-  action(N):- write(N), nl, N1=N-1, action(N1).
+  girl(Anya).
+  girl(Nina).
+  girl(Natasha).
+  color(white).
+  color(blue).
+  color(green).
+  pair(X, Y):- girl(X), color(Y), X = Natasha, Y = green.
+  pair(X, Y):- girl(X), color(Y), X = Nina, not(Y = white), not(Y = green).
+  pair(X, Y):- girl(X), color(Y), X = Anya, not(Y=green), not(Y = blue).
+%goal
+%pair(X,Y).

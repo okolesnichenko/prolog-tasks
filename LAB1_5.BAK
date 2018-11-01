@@ -1,5 +1,8 @@
+domains
+    hour = integer
+    subject = symbol
 predicates
-    task(integer, integer, symbol)
+    task(hour, hour, subject)
 clauses
     task(0, 7, sleep).
     task(7, 8, breakfast).
